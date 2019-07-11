@@ -1,36 +1,36 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <button
-        class="btn btn-primary"
-        (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
+      <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
       <br><br>
       <ul class="list-group">
         <div *ngIf="onlyOdd">
-            <li class="list-group-item" 
-            [ngClass]="{odd: number % 2 !== 0}" 
-            *ngFor="let number of oddNumbers" 
+          <li class="list-group-item" [ngClass]="{odd: number % 2 !== 0}" *ngFor="let number of oddNumbers"
             [ngStyle]="{backgroundColor: number % 2 !== 0 ? 'yellow' : 'transparent'}">
-              <!-- <li class="list-group-item" *ngFor="let number of numbers" *ngIf="number % 2 == 0"> --> <!-- We cannot have more than structural directives on the same element -->
-              {{ number }}
-            </li>
+            <!-- <li class="list-group-item" *ngFor="let number of numbers" *ngIf="number % 2 == 0"> -->
+            <!-- We cannot have more than structural directives on the same element -->
+            {{ number }}
+          </li>
         </div>
 
         <div *ngIf="!onlyOdd">
-            <li class="list-group-item" 
-            *ngFor="let number of evenNumbers" 
-            [ngClass]="{even: number % 2 === 0}" 
+          <li class="list-group-item" *ngFor="let number of evenNumbers" [ngClass]="{even: number % 2 === 0}"
             [ngStyle]="{backgroundColor: number % 2 === 0 ? 'green' : 'transparent'}">
-              <!-- <li class="list-group-item" *ngFor="let number of numbers" *ngIf="number % 2 == 0"> --> <!-- We cannot have more than structural directives on the same element -->
-              {{ number }}
-            </li>
+            <!-- <li class="list-group-item" *ngFor="let number of numbers" *ngIf="number % 2 == 0"> -->
+            <!-- We cannot have more than structural directives on the same element -->
+            {{ number }}
+          </li>
         </div>
       </ul>
       <!-- <ng-template [ngIf]="onlyOdd">
         <p>Only odd</p>
       </ng-template> -->
       <p appBasicHighlight>Style me with basic directive!</p>
-      <p appBetterHighlight>Style me with better directive!</p>
+      <!-- directives itself can can be bind into square brackets if there is only one property to bind or main property to bind -->
+      <!-- <p appBetterHighlight [defaultColor]="'pink'" [highlightedColor]="'yellow'">Style me with better directive!</p> -->
+      <!-- <p [appBetterHighlight]="'red'" [defaultColor]="'pink'">Style me with better directive!</p> -->
+      <!-- <p [appBetterHighlight]="'red'" defaultColor="pink">Style me with better directive!</p> -->
+      <p appBetterHighlight="red" defaultColor="pink">Style me with better directive!</p>
     </div>
   </div>
 </div>
