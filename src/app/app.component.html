@@ -4,6 +4,7 @@
       <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
       <br><br>
       <ul class="list-group">
+
         <div *ngIf="onlyOdd">
           <li class="list-group-item" [ngClass]="{odd: number % 2 !== 0}" *ngFor="let number of oddNumbers"
             [ngStyle]="{backgroundColor: number % 2 !== 0 ? 'yellow' : 'transparent'}">
@@ -43,15 +44,20 @@
         </div>
         
       </ul>
-      <!-- <ng-template [ngIf]="onlyOdd">
-        <p>Only odd</p>
-      </ng-template> -->
+
       <p appBasicHighlight>Style me with basic directive!</p>
       <!-- directives itself can can be bind into square brackets if there is only one property to bind or main property to bind -->
       <!-- <p appBetterHighlight [defaultColor]="'pink'" [highlightedColor]="'yellow'">Style me with better directive!</p> -->
       <!-- <p [appBetterHighlight]="'red'" [defaultColor]="'pink'">Style me with better directive!</p> -->
       <!-- <p [appBetterHighlight]="'red'" defaultColor="pink">Style me with better directive!</p> -->
       <p appBetterHighlight="red" defaultColor="pink">Style me with better directive!</p>
+
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">Value is 5</p>
+        <p *ngSwitchCase="10">Value is 10</p>
+        <p *ngSwitchCase="100">Value is 100</p>
+        <p *ngSwitchDefault>Value is Default</p>
+      </div>      
     </div>
   </div>
 </div>
