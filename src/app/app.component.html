@@ -28,11 +28,20 @@
             <li class="list-group-item" *ngFor="let number of evenNumbers" [ngClass]="{even: number % 2 === 0}"
               [ngStyle]="{backgroundColor: number % 2 === 0 ? 'green' : 'transparent'}">
               <!-- <li class="list-group-item" *ngFor="let number of numbers" *ngIf="number % 2 == 0"> -->
-              <!-- We cannot have more than structural directives on the same element -->
-              {{ number }}
+              <!-- We cannot have more than structural directives on the same element --> {{ number }}
             </li>
           </div>
         </ng-template>
+
+        <div *appUnless="onlyOdd">
+          <li class="list-group-item" *ngFor="let number of evenNumbers" [ngClass]="{even: number % 2 === 0}"
+            [ngStyle]="{backgroundColor: number % 2 === 0 ? 'green' : 'transparent'}">
+            <!-- <li class="list-group-item" *ngFor="let number of numbers" *ngIf="number % 2 == 0"> -->
+            <!-- We cannot have more than structural directives on the same element -->
+            {{ number }}
+          </li>
+        </div>
+        
       </ul>
       <!-- <ng-template [ngIf]="onlyOdd">
         <p>Only odd</p>
