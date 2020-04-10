@@ -6,7 +6,8 @@
       <ul class="list-group">
 
         <div *ngIf="onlyOdd">
-          <li class="list-group-item" [ngClass]="{odd: number % 2 !== 0}" *ngFor="let number of oddNumbers"
+          <li class="list-group-item" [ngClass]="{odd: number % 2 !== 0}" 
+            *ngFor="let number of oddNumbers"
             [ngStyle]="{backgroundColor: number % 2 !== 0 ? 'yellow' : 'transparent'}">
             <!-- <li class="list-group-item" *ngFor="let number of numbers" *ngIf="number % 2 == 0"> -->
             <!-- We cannot have more than structural directives on the same element -->
@@ -15,7 +16,8 @@
         </div>
 
         <div *ngIf="!onlyOdd">
-          <li class="list-group-item" *ngFor="let number of evenNumbers" [ngClass]="{even: number % 2 === 0}"
+          <li class="list-group-item" *ngFor="let number of evenNumbers" 
+            [ngClass]="{even: number % 2 === 0}"
             [ngStyle]="{backgroundColor: number % 2 === 0 ? 'green' : 'transparent'}">
             <!-- <li class="list-group-item" *ngFor="let number of numbers" *ngIf="number % 2 == 0"> -->
             <!-- We cannot have more than structural directives on the same element -->
@@ -26,7 +28,8 @@
         <!-- This is what *ngIf (structural directive) transforms into after compilation  -->
         <ng-template [ngIf]="!onlyOdd">
           <div>
-            <li class="list-group-item" *ngFor="let number of evenNumbers" [ngClass]="{even: number % 2 === 0}"
+            <li class="list-group-item" *ngFor="let number of evenNumbers" 
+              [ngClass]="{even: number % 2 === 0}"
               [ngStyle]="{backgroundColor: number % 2 === 0 ? 'green' : 'transparent'}">
               <!-- <li class="list-group-item" *ngFor="let number of numbers" *ngIf="number % 2 == 0"> -->
               <!-- We cannot have more than structural directives on the same element --> {{ number }}
@@ -35,7 +38,8 @@
         </ng-template>
 
         <div *appUnless="onlyOdd">
-          <li class="list-group-item" *ngFor="let number of evenNumbers" [ngClass]="{even: number % 2 === 0}"
+          <li class="list-group-item" *ngFor="let number of evenNumbers" 
+            [ngClass]="{even: number % 2 === 0}"
             [ngStyle]="{backgroundColor: number % 2 === 0 ? 'green' : 'transparent'}">
             <!-- <li class="list-group-item" *ngFor="let number of numbers" *ngIf="number % 2 == 0"> -->
             <!-- We cannot have more than structural directives on the same element -->
@@ -46,11 +50,24 @@
       </ul>
 
       <p appBasicHighlight>Style me with basic directive!</p>
-      <!-- directives itself can can be bind into square brackets if there is only one property to bind or main property to bind -->
-      <!-- <p appBetterHighlight [defaultColor]="'pink'" [highlightedColor]="'yellow'">Style me with better directive!</p> -->
+      <!-- directives itself can be bind into square brackets if there is only one property to bind
+           or main property to bind example [ngClass] directive where we have only one property-->
+      <!-- <p appBetterHighlight [defaultColor]="'pink'" [highlightedColor]="'yellow'">Style me with
+           better directive!</p> -->
+      <!-- In the above example Angular itself figures out that you are not binding to the property 
+          of paragraph but to a property of directive, as soon as it finds that defaultColor or
+          highlightedColor are not the native properties of the paragraph -->
       <!-- <p [appBetterHighlight]="'red'" [defaultColor]="'pink'">Style me with better directive!</p> -->
+      <!-- In the above example since we have provided an alias to our highlighted property now, and the
+          alias name is same as directive name, we can now bind the 
+          directive now [appBetterHighlight]="'red'"-->
       <!-- <p [appBetterHighlight]="'red'" defaultColor="pink">Style me with better directive!</p> -->
+      
       <p appBetterHighlight="red" defaultColor="pink">Style me with better directive!</p>
+
+      <!-- Above two examples are true for all property binding in general, if you are binding to a string
+          you may omit the single quotation and the square brackets -->
+      
 
       <div [ngSwitch]="value">
         <p *ngSwitchCase="5">Value is 5</p>
