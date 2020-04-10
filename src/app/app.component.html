@@ -74,7 +74,9 @@
         <p *ngSwitchCase="10">Value is 10</p>
         <p *ngSwitchCase="100">Value is 100</p>
         <p *ngSwitchDefault>Value is Default</p>
-      </div>      
+      </div>
+      <!-- It doesn't work here, since it works only on elements -->
+      <app-test-component appBetterHighlight="red" defaultColor="pink"></app-test-component>      
     </div>
   </div>
 </div>
